@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models
@@ -14,12 +15,17 @@ namespace P2FixAnAppDotNetCode.Models
         public IEnumerable<CartLine> Lines => GetCartLineList();
 
         /// <summary>
+        /// Creates a unique instance of CartLine list to manage the lines of the cart that will persist
+        /// </summary>
+        private List<CartLine> _cartLines = new List<CartLine>();
+
+        /// <summary>
         /// Return the actual cartline list
         /// </summary>
         /// <returns></returns>
         private List<CartLine> GetCartLineList()
         {
-            return new List<CartLine>();
+            return _cartLines;
         }
 
         /// <summary>
@@ -27,7 +33,17 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            // TODO implement the method
+            Product foundProduct = FindProductInCartLines(product.Id);
+            Boolean isInCart = foundProduct != null;
+
+            if (!isInCart)
+            {
+                GetCartLineList().Add(new CartLine { Product = product, Quantity = quantity });
+                return;
+            }
+
+            GetCartLineList().FirstOrDefault(line => line.Product.Id == product.Id).Quantity += quantity;
+            return;
         }
 
         /// <summary>
@@ -59,8 +75,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
-            // TODO implement the method
-            return null;
+            return GetCartLineList().FirstOrDefault(line => line.Product.Id == productId)?.Product;
         }
 
         /// <summary>

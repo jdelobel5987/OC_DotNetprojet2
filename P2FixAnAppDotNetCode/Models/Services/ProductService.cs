@@ -32,7 +32,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// </summary>
         public Product GetProductById(int id)
         {
-            return GetAllProducts().FirstOrDefault(product => product.Id == id);
+            return _productRepository.GetAllProducts().FirstOrDefault(product => product.Id == id);
         }
 
         /// <summary>
