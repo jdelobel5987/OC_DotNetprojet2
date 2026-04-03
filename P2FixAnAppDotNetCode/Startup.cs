@@ -49,8 +49,15 @@ namespace P2FixAnAppDotNetCode
                     new CultureInfo("en"),
                     new CultureInfo("fr-FR"),
                     new CultureInfo("fr"),
+                    new CultureInfo("es-ES"),
+                    new CultureInfo("es")
                 };
 
+                // ignore browser language settings
+                opts.RequestCultureProviders = new List<IRequestCultureProvider>
+                {
+                    new CookieRequestCultureProvider()
+                };
                 opts.DefaultRequestCulture = new RequestCulture("en");
                 // Formatting numbers, dates, etc.
                 opts.SupportedCultures = supportedCultures;
