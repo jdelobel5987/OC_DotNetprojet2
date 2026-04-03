@@ -67,6 +67,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public double GetAverageValue()
         {
+            if (GetCartLineList().Count == 0) return 0.0;
+            
             double total = 0.0;
             int itemCount = 0;
 
