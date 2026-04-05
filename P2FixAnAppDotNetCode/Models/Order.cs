@@ -25,6 +25,8 @@ namespace P2FixAnAppDotNetCode.Models
                   ErrorMessageResourceType = typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order))]
         public string City { get; set; }
 
+        [Required(ErrorMessageResourceName = "ErrorMissingZipcode",
+                  ErrorMessageResourceType = typeof(P2FixAnAppDotNetCode.Resources.Models.ViewModels.Order))]
         public string Zip { get; set; }
 
         [Required(ErrorMessageResourceName = "ErrorMissingCountry", 

@@ -31,6 +31,13 @@ namespace P2FixAnAppDotNetCode.Resources.Models.ViewModels
                 return resourceManager.GetString("ErrorMissingCity", resourceCulture);
             }
         }
+        public static string ErrorMissingZipcode
+        {
+            get
+            {
+                return resourceManager.GetString("ErrorMissingZipcode", resourceCulture);
+            }
+        }
         public static string ErrorMissingCountry
         {
             get
