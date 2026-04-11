@@ -31,16 +31,22 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Adds a product in the cart or increment its quantity in the cart if already added
         /// </summary>//
-        public void AddItem(Product product, int quantity)
+        public bool AddItem(Product product, int quantity)
         {
+            int totalQuantity = FindProductInCartLines(product.Id) == null
+                ? quantity
+                : GetCartLineList().FirstOrDefault(line => line.Product.Id == product.Id).Quantity + quantity;
+
+            if (totalQuantity > product.Stock) return false;
+
             if (FindProductInCartLines(product.Id) == null)
             {
                 GetCartLineList().Add(new CartLine { Product = product, Quantity = quantity });
-                return;
+                return true;
             }
 
             GetCartLineList().FirstOrDefault(line => line.Product.Id == product.Id).Quantity += quantity;
-            return;
+            return true;
         }
 
         /// <summary>

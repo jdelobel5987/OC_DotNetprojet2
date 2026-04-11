@@ -6,6 +6,10 @@
 
 <br/>
 <div id="panel-body">
+    @if (TempData["StockError"] != null)
+    {
+        <div class="alert alert-danger">@TempData["StockError"]</div>
+    }
     <table class="table table-bordered table-striped table-sm">
         <thead>
             <tr>
