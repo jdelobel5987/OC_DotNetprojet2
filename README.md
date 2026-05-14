@@ -23,6 +23,16 @@ git clone https://github.com/jdelobel5987/OC_DotNetprojet2.git
 cd OC_DotNetprojet2
 ```
 
+#### Se placer sur la branche de développement
+
+```powershell
+# lister les branches existantes et visualiser la branche active
+git branch
+
+# se placer sur la branche de développement (si nécessaire)
+git checkout dev
+```
+
 #### Exécuter l'application
 
 ##### En ligne de commande
